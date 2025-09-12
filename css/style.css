@@ -250,6 +250,8 @@ section {
 .hero-content h1 {
     color: var(--color-tertiary);
     margin-bottom: 7rem;
+    border-color: #C77D5F;
+    border-width: 2px;
 }
 
 .hero-content p {
@@ -629,18 +631,16 @@ section {
         transform: translateY(-8px) rotate(-45deg);
     }
 
-    .hero {
-        height: 80vh;
-    }
-
     .hero-content h1 {
         font-size: 2.5rem;
+        margin-bottom: 3rem;
     }
     .hero-content p {
         font-size: 1.1rem;
     }
     .hero-content .cta-buttons {
         flex-direction: column;
+        margin-top: 3rem;
     }
 
     .why-valorem-grid {
