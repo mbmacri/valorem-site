@@ -1,19 +1,51 @@
-document.addEventListener('DOMContentLoaded', () => {
+async function loadComponent(url, elementId) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+        }
+        const text = await response.text();
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.innerHTML = text;
+        } else {
+            console.error(`Element with id ${elementId} not found.`);
+        }
+    } catch (error) {
+        console.error(`Error loading component from ${url}:`, error);
+    }
+}
+
+async function loadHeaderAndFooter() {
+    // Load header and footer in parallel
+    await Promise.all([
+        loadComponent('header.html', 'main-header-placeholder'),
+        loadComponent('footer.html', 'main-footer-placeholder')
+    ]);
+
+    // --- All the original script.js logic goes here ---
 
     // Header scroll effect
     const header = document.querySelector('.main-header');
     if (header) {
+        // Set initial logo state
+        const logo = header.querySelector('.logo img');
+        if(logo) {
+            logo.setAttribute('src', 'assets/logo_trans_landed_white.png');
+        }
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
-                // Change logo for dark background
-                const logo = header.querySelector('.logo img');
-                if(logo) logo.setAttribute('src', 'assets/logo_trans_landed_white.png');
+                // The logo remains the same based on the original script logic
+                if (logo) {
+                    logo.setAttribute('src', 'assets/logo_trans_landed_white.png');
+                }
             } else {
                 header.classList.remove('scrolled');
-                // Change logo for transparent background
-                const logo = header.querySelector('.logo img');
-                if(logo) logo.setAttribute('src', 'assets/logo_trans_landed_white.png');
+                if (logo) {
+                    logo.setAttribute('src', 'assets/logo_trans_landed_white.png');
+                }
             }
         });
     }
@@ -41,8 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function validateEmail(email) {
-        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return re.test(String(email).toLowerCase());
     }
+}
 
-});
+document.addEventListener('DOMContentLoaded', loadHeaderAndFooter);
