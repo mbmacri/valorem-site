@@ -10,6 +10,7 @@
     --color-neutral-dark: #000000; /* Gris Antracita */
     --color-neutral-light: #F8F4F0; /* Blanco Roto */
     --color-neutral-light-gray: #E3E3E3; /* Blanco Roto */
+    --color-backgound-middle: rgba(232, 155, 102, 0.1);
     --font-headings: 'Montserrat', sans-serif;
     --font-body: 'Open Sans', sans-serif;
     --container-width: 1200px;
@@ -273,7 +274,7 @@ section {
 
 /* Our Mission Section */
 .mission-section {
-    background-color: rgba(232, 155, 102, 0.1); /* #E89B66 with low opacity */
+    background-color:var(--color-backgound-middle); /* #E89B66 with low opacity */
     text-align: center;
 }
 
@@ -436,26 +437,15 @@ section {
 
 /* Nearshore Application Section */
 .nearshore-apply-section {
-    background-color: rgba(63, 71, 75, 0.05);
-}
-
-.nearshore-apply-details summary {
-    cursor: pointer;
-    font-family: var(--font-headings);
-    font-size: 1.5rem;
-    font-weight: 600;
-    padding: 1rem;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--color-backgound-middle);
 }
 
 .nearshore-apply-content {
     padding: 2rem;
     margin-top: 1rem;
-    border: 1px solid #eee;
+    /* border: 1px solid #eee; */
     border-radius: 5px;
-    background: #fff;
+    /* background: #fff; */
 }
 
 

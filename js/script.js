@@ -41,15 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function validateEmail(email) {
-        const re = /^(([^<>()[\\]\\.,;:\s@\"]+(\.[^<>()[\\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(String(email).toLowerCase());
-    }
-
-    // Accordion for Nearshore Application
-    const detailsElement = document.querySelector('.nearshore-apply-details');
-    if (detailsElement) {
-        // The <details> element handles this natively, but you could add JS for more complex animations if needed.
-        // For now, no extra JS is required for the basic open/close functionality.
     }
 
 });
