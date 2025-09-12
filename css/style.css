@@ -4,11 +4,12 @@
 
 /* CSS Variables */
 :root {
-    --color-primary: #C0573B; /* Terracota Profundo */
-    --color-secondary: #8B2C3F; /* Rojo Burdeos */
-    --color-tertiary: #C8A061; /* Gold */
-    --color-neutral-dark: #3F474B; /* Gris Antracita */
+    --color-primary: #C8A061; /* Terracota Profundo */
+    --color-secondary: #C77D5F; /* Rojo Burdeos */
+    --color-tertiary: #c7ab5f; /* Gold */
+    --color-neutral-dark: #000000; /* Gris Antracita */
     --color-neutral-light: #F8F4F0; /* Blanco Roto */
+    --color-neutral-light-gray: #E3E3E3; /* Blanco Roto */
     --font-headings: 'Montserrat', sans-serif;
     --font-body: 'Open Sans', sans-serif;
     --container-width: 1200px;
@@ -98,16 +99,17 @@ section {
 }
 
 .btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-neutral-light);
-    border-color: var(--color-primary);
+    background-color: var(--color-tertiary);
+    border-color: var(--color-tertiary);
+    color: var(--color-neutral-dark);
 }
 
 .btn-primary:hover {
-    background-color: #a94a30;
-    border-color: #a94a30;
-    color: var(--color-neutral-light);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-neutral-dark);
 }
+
 
 .btn-secondary {
     background-color: transparent;
@@ -230,8 +232,9 @@ section {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/hero_background.png') no-repeat center center/cover;
-    color: var(--color-neutral-light);
+    /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/hero_background.png') no-repeat center center/cover; */
+    background: var(--color-neutral-dark);
+    color: var(--color-primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -240,7 +243,7 @@ section {
 }
 
 .hero-content h1 {
-    color: var(--color-neutral-light);
+    color: var(--color-tertiary);
     margin-bottom: 1rem;
 }
 
@@ -366,7 +369,7 @@ section {
 }
 
 .about-us-content h4 {
-    color: var(--color-primary);
+    color: var(--color-secondary);
     margin-top: 1.5rem;
 }
 
