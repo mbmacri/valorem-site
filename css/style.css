@@ -185,6 +185,9 @@ section {
     width: 100%;
 }
 
+.main-header .btn {
+    margin: 0 10px;
+}
 .nav-dropdown {
     position: relative;
 }
@@ -233,6 +236,7 @@ section {
 /* Hero Section */
 .hero {
     height: 100vh;
+    min-height: 800px;
     /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/hero_background.png') no-repeat center center/cover; */
     background: var(--color-neutral-dark);
     color: var(--color-primary);
@@ -240,12 +244,12 @@ section {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 5%;
+    padding: 0% 5%;
 }
 
 .hero-content h1 {
     color: var(--color-tertiary);
-    margin-bottom: 1rem;
+    margin-bottom: 7rem;
 }
 
 .hero-content p {
@@ -256,6 +260,7 @@ section {
 }
 
 .hero-content .cta-buttons {
+    margin-top: 5rem;
     display: flex;
     gap: 1rem;
     justify-content: center;
