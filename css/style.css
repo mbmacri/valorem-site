@@ -237,8 +237,8 @@ section {
 .hero {
     height: 100vh;
     min-height: 800px;
-    /* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/hero_background.png') no-repeat center center/cover; */
-    background: var(--color-neutral-dark);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/hero_background_2.png') no-repeat center;
+    background-color: #000000;
     color: var(--color-primary);
     display: flex;
     align-items: center;
@@ -629,6 +629,11 @@ section {
     }
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+    }
+    .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/hero_background_2.png') no-repeat center;
+        background-size: 100vh;
+        background-color: var(--color-neutral-dark)
     }
 
     .hero-content h1 {
