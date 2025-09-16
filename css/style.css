@@ -365,18 +365,27 @@ section {
 }
 
 /* About Us Section */
-.our-founders-content {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+.founders-container {
+    display: flex;
     gap: 3rem;
-    align-items: center;
 }
 
-.our-founders-content img {
+.founder-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.founder-image {
+    margin-bottom: 1.5rem;
+}
+
+.founder-image img {
+    width: 100%;
     border-radius: 10px;
 }
 
-.our-founders-content h4 {
+.founder-text h4 {
     color: var(--color-secondary);
     margin-top: 1.5rem;
 }
@@ -561,14 +570,12 @@ section {
         grid-template-columns: 1fr;
     }
 
-    .our-founders-content, .contact-content, .service-page-content {
+    .contact-content, .service-page-content {
         grid-template-columns: 1fr;
     }
 
-    .our-founders-content img {
-        max-width: 300px;
-        margin: 0 auto 2rem auto;
-        display: block;
+    .founders-container {
+        flex-direction: column;
     }
     
     .service-page-content img {
