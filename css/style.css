@@ -365,18 +365,18 @@ section {
 }
 
 /* About Us Section */
-.about-us-content {
+.our-founders-content {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 3rem;
     align-items: center;
 }
 
-.about-us-content img {
+.our-founders-content img {
     border-radius: 10px;
 }
 
-.about-us-content h4 {
+.our-founders-content h4 {
     color: var(--color-secondary);
     margin-top: 1.5rem;
 }
@@ -561,11 +561,11 @@ section {
         grid-template-columns: 1fr;
     }
 
-    .about-us-content, .contact-content, .service-page-content {
+    .our-founders-content, .contact-content, .service-page-content {
         grid-template-columns: 1fr;
     }
 
-    .about-us-content img {
+    .our-founders-content img {
         max-width: 300px;
         margin: 0 auto 2rem auto;
         display: block;
