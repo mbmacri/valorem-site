@@ -132,6 +132,7 @@ section {
     z-index: 1000;
     padding: 1rem 0;
     transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    background-color: var(--color-neutral-dark)
 }
 
 .main-header.scrolled {
@@ -381,13 +382,28 @@ section {
 }
 
 .founder-image img {
-    width: 100%;
+    width: 40%;
     border-radius: 10px;
 }
 
 .founder-text h4 {
     color: var(--color-secondary);
     margin-top: 1.5rem;
+}
+
+.founder-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    vertical-align: middle;
+}
+
+.founder a {
+    font-size: 1rem;
+}
+
+.founder a span {
+    
 }
 
 /* Contact Section */
