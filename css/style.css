@@ -4,10 +4,10 @@
 
 /* CSS Variables */
 :root {
-    --color-primary: #C8A061; /* Terracota Profundo */
-    --color-secondary: #C77D5F; /* Rojo Burdeos */
+    --color-primary: #C8A061; /* Old Gold */
+    --color-secondary: #C77D5F; /* Terracota Suave */
     --color-tertiary: #c7ab5f; /* Gold */
-    --color-neutral-dark: #000000; /* Gris Antracita */
+    --color-neutral-dark: #000000; /* Negro */
     --color-neutral-light: #F8F4F0; /* Blanco Roto */
     --color-neutral-light-gray: #E3E3E3; /* Blanco Roto */
     --color-backgound-middle: rgba(232, 155, 102, 0.1);
@@ -238,7 +238,7 @@ section {
 .hero {
     height: 100vh;
     min-height: 800px;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/hero_background_2.png') no-repeat center;
+    background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .6)), url('../assets/hero_background_2.jpg') no-repeat center;
     background-color: #000000;
     color: var(--color-primary);
     display: flex;
@@ -260,6 +260,7 @@ section {
     max-width: 800px;
     margin: 0 auto 2rem auto;
     font-weight: 300;
+    text-align: justify;
 }
 
 .hero-content .cta-buttons {
@@ -392,18 +393,15 @@ section {
 }
 
 .founder-socials {
+    margin-top: 1.5rem;
+}
+
+.founder-socials a {
     display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-    vertical-align: middle;
-}
-
-.founder a {
-    font-size: 1rem;
-}
-
-.founder a span {
-    
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-tertiary);
+    font-weight: 600;
 }
 
 /* Contact Section */
@@ -654,7 +652,7 @@ section {
         transform: translateY(-8px) rotate(-45deg);
     }
     .hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/hero_background_2.png') no-repeat center;
+        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url('../assets/hero_background_2.png') no-repeat center;
         background-size: 100vh;
         background-color: var(--color-neutral-dark)
     }
