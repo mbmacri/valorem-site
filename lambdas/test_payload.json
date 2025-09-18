@@ -1,0 +1,9 @@
+{
+  "requestContext": {
+    "http": {
+      "method": "POST",
+      "sourceIp": "127.0.0.1"
+    }
+  },
+  "body": "{\"name\":\"Test User\",\"email\":\"test@example.com\",\"company\":\"Test Inc.\",\"service\":\"Finance Optimization\",\"message\":\"This is a test message.\",\"recaptcha_token\":\"REPLACE_WITH_A_REAL_TOKEN\"}"
+}

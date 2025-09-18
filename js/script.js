@@ -23,12 +23,9 @@ async function loadHeaderAndFooter() {
         loadComponent('footer.html', 'main-footer-placeholder')
     ]);
 
-    // --- All the original script.js logic goes here ---
-
     // Header scroll effect
     const header = document.querySelector('.main-header');
     if (header) {
-        // Set initial logo state
         const logo = header.querySelector('.logo img');
         if(logo) {
             logo.setAttribute('src', 'assets/logo_trans_landed_white.png');
@@ -37,7 +34,6 @@ async function loadHeaderAndFooter() {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
-                // The logo remains the same based on the original script logic
                 if (logo) {
                     logo.setAttribute('src', 'assets/logo_trans_landed_white.png');
                 }
@@ -60,21 +56,69 @@ async function loadHeaderAndFooter() {
         });
     }
 
-    // Basic form validation (can be expanded)
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            const email = contactForm.querySelector('#email');
-            if (email && !validateEmail(email.value)) {
-                e.preventDefault();
-                alert('Please enter a valid email address.');
-            }
-        });
-    }
+    // New Contact Form Submission Logic with reCAPTCHA
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
 
-    function validateEmail(email) {
-        const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return re.test(String(email).toLowerCase());
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            // Basic validation
+            if (!name.trim() || !email.trim()) {
+                formMessage.textContent = 'Please fill in all required fields.';
+                formMessage.style.color = 'red';
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            formMessage.textContent = '';
+
+            grecaptcha.enterprise.ready(async () => {
+                try {
+                    const token = await grecaptcha.enterprise.execute('6LdoY80rAAAAAEzTd2UIWBCyY4P1kdMct88FkPy8', {action: 'contact'});
+                    console.log('Recaptcha token:', token);
+
+                    const formData = {
+                        name: name,
+                        email: email,
+                        company: document.getElementById('company').value,
+                        service: document.getElementById('service').value,
+                        message: document.getElementById('message').value,
+                        recaptcha_token: token
+                    };
+
+                    const response = await fetch('https://b6b5fhl9c1.execute-api.us-east-2.amazonaws.com/contact-from', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (response.ok) {
+                        formMessage.textContent = 'Thank you for your message! We will get back to you shortly.';
+                        formMessage.style.color = 'green';
+                        contactForm.reset();
+                    } else {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'An unknown error occurred.');
+                    }
+
+                } catch (error) {
+                    formMessage.textContent = `An error occurred: ${error.message}`;
+                    formMessage.style.color = 'red';
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+                }
+            });
+        });
     }
 }
 
