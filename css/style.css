@@ -618,16 +618,17 @@ section {
         width: 100%;
         background-color: var(--color-neutral-dark);
         padding: 1rem 0;
+        gap: 0.5rem;
     }
     
     .main-header .nav-menu.active {
         display: flex;
     }
 
-    .main-header .nav-menu li {
+    .main-header .nav-menu > li {
         width: 100%;
         text-align: center;
-        padding: 0.5rem 0;
+        padding: 0.17rem 0;
     }
     
     .nav-dropdown .dropdown-menu {
