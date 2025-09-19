@@ -81,8 +81,7 @@ async function loadHeaderAndFooter() {
             grecaptcha.enterprise.ready(async () => {
                 try {
                     const token = await grecaptcha.enterprise.execute('6LdoY80rAAAAAEzTd2UIWBCyY4P1kdMct88FkPy8', {action: 'contact'});
-                    console.log('Recaptcha token:', token);
-
+                    
                     const formData = {
                         name: name,
                         email: email,
@@ -92,7 +91,7 @@ async function loadHeaderAndFooter() {
                         recaptcha_token: token
                     };
 
-                    const response = await fetch('https://b6b5fhl9c1.execute-api.us-east-2.amazonaws.com/contact-from', {
+                    const response = await fetch('https://b6b5fhl9c1.execute-api.us-east-2.amazonaws.com/contact-form', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -116,6 +115,83 @@ async function loadHeaderAndFooter() {
                 } finally {
                     submitButton.disabled = false;
                     submitButton.textContent = 'Send Message';
+                }
+            });
+        });
+    }
+
+    // New Talent Form Submission Logic
+    const talentForm = document.getElementById('talent-form');
+    const talentFormMessage = document.getElementById('talent-form-message');
+
+    if (talentForm) {
+        talentForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const submitButton = talentForm.querySelector('button[type="submit"]');
+            
+            // Form field values
+            const name = document.getElementById('apply-name').value;
+            const email = document.getElementById('apply-email').value;
+            const country = document.getElementById('apply-country').value;
+            const linkedin = document.getElementById('apply-linkedin').value;
+            const expertise = document.getElementById('apply-expertise').value;
+            const resume = document.getElementById('apply-resume').value;
+            const consent = document.getElementById('apply-consent').checked;
+
+            // Basic validation
+            if (!name || !email || !country || !linkedin || !expertise || !resume) {
+                talentFormMessage.textContent = 'Please fill in all required fields.';
+                talentFormMessage.style.color = 'red';
+                return;
+            }
+            if (!consent) {
+                talentFormMessage.textContent = 'You must consent to store your information.';
+                talentFormMessage.style.color = 'red';
+                return;
+            }
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+            talentFormMessage.textContent = '';
+
+            grecaptcha.enterprise.ready(async () => {
+                try {
+                    const token = await grecaptcha.enterprise.execute('6LdoY80rAAAAAEzTd2UIWBCyY4P1kdMct88FkPy8', {action: 'join_us'});
+
+                    const formData = {
+                        name: name,
+                        email: email,
+                        country: country,
+                        linkedin: linkedin,
+                        expertise: expertise,
+                        resume: resume,
+                        recaptcha_token: token
+                    };
+
+                    const response = await fetch('https://b6b5fhl9c1.execute-api.us-east-2.amazonaws.com/join-us-form', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    if (response.ok) {
+                        talentFormMessage.textContent = 'Thank you for your application! We will contact you if a suitable opportunity arises.';
+                        talentFormMessage.style.color = 'green';
+                        talentForm.reset();
+                    } else {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'An unknown error occurred.');
+                    }
+
+                } catch (error) {
+                    talentFormMessage.textContent = `An error occurred: ${error.message}`;
+                    talentFormMessage.style.color = 'red';
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Apply Now';
                 }
             });
         });

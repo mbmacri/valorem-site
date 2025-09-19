@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdoY80rAAAAAEzTd2UIWBCyY4P1kdMct88FkPy8"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Our Team | Valorem Global Partners LLC</title>
@@ -28,7 +29,7 @@
                 <div class="nearshore-apply-content">
                     <p class="text-center">If you are a skilled finance professional interested in flexible, remote-first opportunities with high-growth US companies, we’d love to hear from you. We are looking for specialists in FP&A, accounting, audit, and financial operations.</p>
                     <div class="contact-form">
-                        <form action="#">
+                        <form id="talent-form">
                             <div class="form-group">
                                 <label for="apply-name">Name*</label>
                                 <input type="text" id="apply-name" class="form-control" required>
@@ -58,6 +59,11 @@
                                 <label for="apply-consent">I consent to having VPG store my information for consideration for future opportunities.*</label>
                             </div>
                             <button type="submit" class="btn btn-primary">Apply Now</button>
+                            <div id="talent-form-message"></div>
+                            <p><small>This site is protected by reCAPTCHA and the Google
+                                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                                <a href="https://policies.google.com/terms">Terms of Service</a> apply.</small>
+                            </p>
                         </form>
                     </div>
                 </div>

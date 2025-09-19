@@ -1,0 +1,13 @@
+{
+  "httpMethod": "POST",
+  "headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  "requestContext": {
+    "http": {
+      "method": "POST"
+    }
+  },
+  "body": "{\"name\":\"Test User\",\"email\":\"test.user@example.com\",\"country\":\"Testland, UTC-5\",\"linkedin\":\"https://linkedin.com/in/testuser\",\"expertise\":\"Testing, Software Development\",\"resume\":\"https://example.com/resume.pdf\",\"recaptcha_token\":\"PASTE_YOUR_TEST_TOKEN_HERE\"}"
+}
